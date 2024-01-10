@@ -1,0 +1,13 @@
+target-folder = "target"
+
+[root]
+type = "folder"
+contents = ["first_layer", "first_layer"]
+
+[first_layer]
+type = "folder"
+contents = ["second_layer", "second_layer", "second_layer"]
+
+[second_layer]
+type = "file"
+contents = "empty"
