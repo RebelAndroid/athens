@@ -10,4 +10,5 @@ contents = ["second_layer", "second_layer", "second_layer"]
 
 [second_layer]
 type = "file"
-contents = "empty"
+contents = "ascii"
+size = 8192

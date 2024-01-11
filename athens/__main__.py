@@ -51,10 +51,21 @@ def construct_paradigm(file_system, paradigm, data):
             construct_paradigm(file_system.opendir(name), item, data)
 
     elif paradigm_type == "file":
-        if paradigm_contents != "empty":
-            print("TODO! Non-empty files")
+        file_name = paradigm + " " + str(random.randint(0, 10 ** 6))
+        file_system.create(file_name)
+        file = file_system.open(file_name, mode="wb")
+
+        if "size" not in paradigm_data or type(paradigm_data["size"]) is not int:
+            print('Paradigm ', paradigm, ' should have field "size"')
             exit(1)
-        file_system.create(paradigm + " " + str(random.randint(0, 10 ** 6)))
+
+        if paradigm_contents == "empty":
+            pass
+        elif paradigm_contents == "bytes":
+            file.write(random.randbytes(paradigm_data["size"]))
+        elif paradigm_contents == "ascii":
+            file.write(bytes(random.randint(32, 126) for i in range(paradigm_data["size"])))
+        
     else:
         print("Type of paradigm ", paradigm, 'is not valid. Expected "directory\", "folder", or "file". Found ', paradigm_type, ".")
 
