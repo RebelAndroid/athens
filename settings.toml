@@ -1,4 +1,4 @@
-target-folder = "target"
+target_folder = "target"
 
 [root]
 type = "folder"
